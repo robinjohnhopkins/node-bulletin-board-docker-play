@@ -1,7 +1,6 @@
-version: '3.3'
+version: "3.3"
 
 services:
-      
   bb-db:
     image: ${dockerId}/bulletin-board-db:v5
     networks:
@@ -34,5 +33,4 @@ services:
     networks:
       - bb-net
 
-networks:
-  bb-net:
+networks: bb-net:

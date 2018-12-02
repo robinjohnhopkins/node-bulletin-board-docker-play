@@ -1,7 +1,6 @@
-version: '3.3'
+version: "3.3"
 
 services:
-      
   bb-db:
     image: ${dockerId:-dockersamples}/bulletin-board-db:v5
     build:
@@ -13,6 +12,16 @@ services:
     image: ${dockerId:-dockersamples}/bulletin-board-app:v5
     build:
       context: ./bulletin-board-app
+    depends_on:
+      - bb-db
+    restart: on-failure
+    networks:
+      - bb-net
+
+  bb-rest:
+    image: ${dockerId:-dockersamples}/bulletin-board-app:v5
+    build:
+      context: ./bulletin-board-rest
     depends_on:
       - bb-db
     restart: on-failure

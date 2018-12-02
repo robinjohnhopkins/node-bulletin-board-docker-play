@@ -71,4 +71,4 @@ app.use((req, res, next) => {
 prometheus.collectDefaultMetrics();
 
 app.listen(8080);
-console.log('Magic happens on port 8080...');
+console.log('REST Magic happens on port 8080...');

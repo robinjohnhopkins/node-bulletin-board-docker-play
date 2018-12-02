@@ -1,3 +1,39 @@
+# docker url play 
+Hey Rob. This pretty awesome docker app tutorial shows several components running via a docker compose file.
+original 
+https://github.com/dockersamples/example-voting-app
+
+
+I cloned and ripped /Users/robinjohnhopkins/workspace/docker-compose-play/node-bulletin-board/bulletin-board-app
+
+into 
+/Users/robinjohnhopkins/workspace/docker-compose-play/node-bulletin-board/bulletin-board-rest
+
+Then in 
+/Users/robinjohnhopkins/workspace/docker-compose-play/node-bulletin-board/bulletin-board-app/backend/backEndTest.js
+we have a rest point called by the gui at 
+/Users/robinjohnhopkins/workspace/docker-compose-play/node-bulletin-board/bulletin-board-app/app.js
+line 41
+/api/backEndListColours
+
+
+which is mapped to bulletin-board-app/backend/backEndTest.js
+    which calls a docker internal url 
+    var url = 'http://bb-rest:8080/api/events'
+but this returns a list from
+bulletin-board-rest/backend/backEndTest.js
+line 35 ['pink','purple','yellow'] - as seen in chrome browser at http://localhost:80
+
+The point being that
+
+bb-rest is an accessible docker url as defined in 
+/Users/robinjohnhopkins/workspace/docker-compose-play/node-bulletin-board/docker-compose.yml
+by having a service called
+  bb-rest:
+
+
+
+
 
 # Node Bulletin Board
 
@@ -41,7 +77,7 @@ Browse to [localhost](http://localhost) to use the app.
 
 ### Configure Grafana
 
-The compose file runs Prometheus to collect metrics and Grafana to show an application dashbaord. Grfana needs some additional setup.
+The compose file runs Prometheus to collect metrics and Grafana to show an application dashboard. Grfana needs some additional setup.
 
 Browse to [localhost:3000](http://localhost:3000) and log in to Grafana with the credentials `admin` / `admin`. 
 
